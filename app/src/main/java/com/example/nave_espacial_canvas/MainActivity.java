@@ -62,11 +62,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-    public void exit(Boolean b) {
-
-
-    }
-
     @Override
     public void onSensorChanged(SensorEvent event) {
 
