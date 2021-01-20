@@ -1,8 +1,10 @@
 package com.example.nave_espacial_canvas;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -11,7 +13,11 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import static android.view.View.SYSTEM_UI_FLAG_IMMERSIVE;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -33,13 +39,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         vj = new VistaJuego(getApplicationContext());
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-     /*   //Para quitar la barra superior e inferior de navegación si el dispositivo la tiene activa
+        //Para quitar la barra superior e inferior de navegación si el dispositivo la tiene activa
         decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 SYSTEM_UI_FLAG_IMMERSIVE
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);*/
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         //Resolucion de pantalla
         ((WindowManager) this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
@@ -53,18 +59,33 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         setContentView(vj);
 
+
+    }
+
+    public void exit(Boolean b) {
+
+
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+
         //Cuando la nave sale de la pantalla se vuelve a reiniciar el juego
         if (restart) {
-            vj.x = ancho/2;
-            vj.y = alto/4;
-            restart = false;
-        }
 
+            vj.x = ancho / 2;
+            vj.y = alto / 4;
+            restart = false;
+            vj.vueltas++;
+            if(vj.vueltas>5){
+                Toast.makeText(this, "GAME OVER!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+        }
         if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+
+
             synchronized (this) {
 
                 vj.x -= Math.round(event.values[0]);

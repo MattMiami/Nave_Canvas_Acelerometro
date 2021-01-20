@@ -16,6 +16,7 @@ public class VistaJuego extends View {
     //Variable ejes acelerómetro
     float x = 0, y = 0, z = 0;
     String X , Y, Z;
+    int vueltas = 0;
 
     //área porteria
     float xStart, yStart, xEnd, yEnd;
@@ -69,6 +70,7 @@ public class VistaJuego extends View {
         canvas.drawText(X, canvas.getWidth()/2, 40,ejes);
         canvas.drawText(Y, canvas.getWidth()/2, 80,ejes);
         canvas.drawText(Z, canvas.getWidth()/2, 120,ejes);
+        canvas.drawText("Nº de Viajes: " + String.valueOf(vueltas), canvas.getWidth()/2, 160,ejes);
 
         //Nave
         ship = getResources().getDrawable(R.drawable.invasores);
