@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             restart = false;
             vj.vueltas++;
             if(vj.vueltas>5){
-                Toast.makeText(this, "GAME OVER!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "FIN DEL JUEGO, VUELVE A INTENTARLO", Toast.LENGTH_LONG).show();
                 finish();
             }
 
