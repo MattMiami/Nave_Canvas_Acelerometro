@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Para quitar la barra superior e inferior de navegación si el dispositivo la tiene activa
-        decorView = getWindow().getDecorView();
+      /*  decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 SYSTEM_UI_FLAG_IMMERSIVE
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);*/
 
         //Resolucion de pantalla
         ((WindowManager) this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             restart = false;
             vj.vueltas++;
             if(vj.vueltas>5){
-                Toast.makeText(this, "FIN DEL JUEGO, VUELVE A INTENTARLO", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "FIN DEL JUEGO", Toast.LENGTH_LONG).show();
                 finish();
             }
 
